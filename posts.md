@@ -11,17 +11,17 @@ excerpt: "A 20 year old software engineer at heart!"
 intro:
   - excerpt: "Hi"
 feature_row:
-    {% for post in site.posts %}
-    - image_path: /assets/images/posts.jpg
-        alt: {{ post.name }}
-        title: {{ post.name }}
-        excerpt: {{ post.desc }}
-        url: {{ post.raw_url }}
-        btn_label: "Read"
-        btn_class: "btn--primary"
-    {% endfor %}
+  - image_path: { { include.base_img_url } }
+    alt: { { include.base_name } }
+    title: { { include.name } }
+    excerpt: { { include.desc } }
+    url: { { include.base_url } }
+    btn_label: "Read More"
+    btn_class: "btn--primary"
 ---
 
 {% include feature_row id="intro" type="center" %}
 
-{% include feature_row %}
+{% for post in site.posts %}
+{% include feature_row base_name={post.base_name} base_url={post.base_url} base_img_url={post.base_img_url} name={post.name} desc={post.desc} date={post.date} %}
+{% endfor %}
