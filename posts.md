@@ -5,7 +5,7 @@ date: 2016-03-23T11:48:41-04:00
 header:
   overlay_color: "#000"
   overlay_filter: "0.5"
-  overlay_image: /assets/images/posts.jpg
+  overlay_image: /assets/images/splash/posts.jpg
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
 excerpt: "A 20 year old software engineer at heart!"
 intro:
