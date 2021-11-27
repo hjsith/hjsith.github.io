@@ -11,11 +11,11 @@ excerpt: "A 20 year old software engineer at heart!"
 intro:
   - excerpt: "Hi"
 feature_row:
-  - image_path: /assets/images/welcome-to-jekyll.jpg
-    alt: "Welcome to Jekyll"
-    title: "Welcome to Jekyll"
-    excerpt: "Testing!"
-    url: "/posts/2021/11/28/welcome-to-jekyll.html"
+  - image_path: /assets/images/stocking-up.jpg
+    alt: "Stocking Up: A Technical Write-Up"
+    title: "Stocking Up: A Technical Write-Up"
+    excerpt: "A technical write-up for Stocking Up!"
+    url: "/posts/2021/11/28/stocking-up.html"
     btn_label: "Read More"
     btn_class: "btn--primary"
 ---
