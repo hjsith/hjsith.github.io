@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Welcome to Jekyll!"
-date: 2021-11-28 02:23:43 +1000
+date: 2021-11-28 02:23:43+1000
 categories: posts
 ---
 
