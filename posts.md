@@ -15,5 +15,5 @@ intro:
 {% include feature_row id="intro" type="center" %}
 
 {% for post in site.posts %}
-{include feature_row image_path={{post.base_img_url}}}
+{% include feature_row image_path={{post.base_img_url}} %}
 {% endfor %}
