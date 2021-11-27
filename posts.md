@@ -23,5 +23,5 @@ feature_row:
 {% include feature_row id="intro" type="center" %}
 
 {% for post in site.posts %}
-{% include feature_row base_name={post.base_name} base_url={post.base_url} base_img_url={post.base_img_url} name={post.name} desc={post.desc} date={post.date} %}
+{% include feature_row base_name={{post.base_name}} base_url={{post.base_url}} base_img_url={{post.base_img_url}} name={{post.name}} desc={{post.desc}} date={{post.date}} %}
 {% endfor %}
