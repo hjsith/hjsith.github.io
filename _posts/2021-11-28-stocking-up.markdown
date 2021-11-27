@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Stocking Up: A Technical Write-Up"
 date: 2021-11-28 02:23:43 +1000
 categories: posts
