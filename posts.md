@@ -11,11 +11,12 @@ excerpt: "A 20 year old software engineer at heart!"
 intro:
   - excerpt: "Hi"
 feature_row:
-  - image_path: include.base_img_url
-    alt: include.base_name
-    title: include.name
-    excerpt: include.desc
-    url: include.base_url
+  - image_path: /assets/images/posts.jpg
+    image_caption: "Image courtesy of [Unsplash](https://unsplash.com/)"
+    alt: "placeholder image 2"
+    title: "Placeholder 2"
+    excerpt: "This is some sample content that goes here with **Markdown** formatting."
+    url: "#test-link"
     btn_label: "Read More"
     btn_class: "btn--primary"
 ---
