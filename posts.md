@@ -11,7 +11,7 @@ excerpt: "A 20 year old software engineer at heart!"
 intro:
   - excerpt: "Hi"
 feature_row:
-  - image_path: /assets/images/stocking-up.jpg
+  - image_path: /assets/images/posts-snippet/stocking-up.jpg
     alt: "Stocking Up: A Technical Write-Up"
     title: "Stocking Up: A Technical Write-Up"
     excerpt: "A technical write-up for Stocking Up!"
