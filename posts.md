@@ -15,7 +15,7 @@ feature_row:
     alt: "Welcome to Jekyll"
     title: "Welcome to Jekyll"
     excerpt: "Testing!"
-    url: "/posts/2021-04-21-welcome-to-jekyll.html"
+    url: "/posts/2021/11/28/welcome-to-jekyll.html"
     btn_label: "Read More"
     btn_class: "btn--primary"
 ---
