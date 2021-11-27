@@ -1,20 +1,14 @@
 ---
+title: "About Me"
 layout: splash
-classes:
-  - landing
-  - dark-theme
+permalink: /about/
+date: 2016-03-23T11:48:41-04:00
+header:
+  overlay_color: "#000"
+  overlay_filter: "0.5"
+  overlay_image: /assets/images/splash.jpg
+  caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
+excerpt: "A 20 year old software engineer at heart!"
+intro:
+  - excerpt: "Hi"
 ---
-
-![Me looking at the sky. Splash image.](/assets/images/splash.jpg "Me!")
-
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-[jekyll-organization]: https://github.com/jekyll
