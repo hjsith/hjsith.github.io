@@ -12,7 +12,7 @@ excerpt: "A 20 year old software engineer at heart!"
 intro:
   - excerpt: "Hi"
 feature_row:
-  - image_path: assets/images/posts.jpg
+  - image_path: /assets/images/posts.jpg
     alt: "placeholder image 1"
     title: "Placeholder 1"
     excerpt: "This is some sample content that goes here with **Markdown** formatting."
