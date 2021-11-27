@@ -13,7 +13,7 @@ This is what my code will look lik below!
 
 Here is some cool code!
 
-```C#
+```csharp
 // Hello World! program
 namespace HelloWorld
 {
