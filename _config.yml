@@ -58,6 +58,7 @@ plugins:
 
 posts:
   - raw_name: "2021-04-21-welcome-to-jekyll"
+  - raw_url: "2021-04-21-welcome-to-jekyll.html"
     name: "Welcome to Jekyll"
     desc: "Testing!"
     date: "2021-04-21"

@@ -16,8 +16,7 @@ feature_row:
         alt: {{ post.name }}
         title: {{ post.name }}
         excerpt: {{ post.desc }}
-        {% assign url = '/posts/' | append post.raw_name | append '.html' %}
-        url: {{ url }}
+        url: {{ post.raw_url }}
         btn_label: "Read"
         btn_class: "btn--primary"
     {% endfor %}
