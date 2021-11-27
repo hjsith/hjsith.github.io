@@ -11,11 +11,11 @@ excerpt: "A 20 year old software engineer at heart!"
 intro:
   - excerpt: "Hi"
 feature_row:
-  - image_path: { { include.base_img_url } }
-    alt: { { include.base_name } }
-    title: { { include.name } }
-    excerpt: { { include.desc } }
-    url: { { include.base_url } }
+  - image_path: include.base_img_url
+    alt: include.base_name
+    title: include.name
+    excerpt: include.desc
+    url: include.base_url
     btn_label: "Read More"
     btn_class: "btn--primary"
 ---
