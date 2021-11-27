@@ -13,7 +13,7 @@ intro:
 feature_row:
   - image_path: /assets/images/posts-snippet/stocking-up.jpg
     alt: "Stocking Up"
-    title: "Stocking Up: A Technical Write-Up"
+    title: "Stocking Up"
     excerpt: "A technical write-up for Stocking Up!"
     url: "/posts/2021/11/28/stocking-up.html"
     btn_label: "Read More"
