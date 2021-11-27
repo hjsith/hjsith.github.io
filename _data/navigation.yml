@@ -1,7 +1,7 @@
 main:
   - title: "Posts"
-    url: /_posts/2021-04-21-welcome-to-jekyll.markdown
+    url: /posts.md
   - title: "Projects"
-    url: /_projects/
+    url: /projects.md
   - title: "About Me"
-    url: /_about/
+    url: /about.md
