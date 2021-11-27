@@ -55,14 +55,6 @@ minimal_mistakes_skin: "dark"
 plugins:
   - jekyll-feed
   - jekyll-include-cache
-
-posts:
-  - base_name: "2021-04-21-welcome-to-jekyll"
-    base_url: "2021-04-21-welcome-to-jekyll.html"
-    base_img_url: "/assets/images/welcome-to-jekyll.jpg"
-    name: "Welcome to Jekyll"
-    desc: "Testing!"
-    date: "2021-04-21"
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

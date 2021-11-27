@@ -10,10 +10,16 @@ header:
 excerpt: "A 20 year old software engineer at heart!"
 intro:
   - excerpt: "Hi"
+feature_row:
+  - image_path: /assets/images/welcome-to-jekyll.jpg
+    alt: "Welcome to Jekyll"
+    title: "Welcome to Jekyll"
+    excerpt: "Testing!"
+    url: "/posts/2021-04-21-welcome-to-jekyll.html"
+    btn_label: "Read More"
+    btn_class: "btn--primary"
 ---
 
 {% include feature_row id="intro" type="center" %}
 
-{% for post in site.posts %}
-{% include feature_row image_path={{post.base_img_url}} %}
-{% endfor %}
+{% include feature_row %}
