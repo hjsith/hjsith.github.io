@@ -7,7 +7,7 @@ tags:
   - react
 ---
 
-This is what my code will look lik below!
+This is what my code will look like below!
 
 ### Code here
 
