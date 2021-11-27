@@ -12,7 +12,7 @@ intro:
   - excerpt: "Hi"
 feature_row:
   - image_path: /assets/images/posts-snippet/stocking-up.jpg
-    alt: "Stocking Up: A Technical Write-Up"
+    alt: "Stocking Up"
     title: "Stocking Up: A Technical Write-Up"
     excerpt: "A technical write-up for Stocking Up!"
     url: "/posts/2021/11/28/stocking-up.html"
