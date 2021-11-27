@@ -57,9 +57,9 @@ plugins:
   - jekyll-include-cache
 
 posts:
-  - raw_name: "2021-04-21-welcome-to-jekyll"
-    raw_url: "2021-04-21-welcome-to-jekyll.html"
-    raw_img_url: "/assets/images/2021-04-21-welcome-to-jekyll.jpg"
+  - base_name: "2021-04-21-welcome-to-jekyll"
+    base_url: "2021-04-21-welcome-to-jekyll.html"
+    base_img_url: "/assets/images/2021-04-21-welcome-to-jekyll.jpg"
     name: "Welcome to Jekyll"
     desc: "Testing!"
     date: "2021-04-21"
