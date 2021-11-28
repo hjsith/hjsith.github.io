@@ -11,12 +11,13 @@ toc_icon: "cog"
 ---
 
 {% include head.html %}
-
 {% include figure image_path="/assets/images/posts-snippet/stocking-up.png" alt="Stocking Up portfolio view screenshot" caption="The Stocking Up portfolio view." %}
-
+___
 # Introduction
 
-# The tech stack and why we chose it
+##
+
+# The tech stack
 
 # Front-end tech
 
