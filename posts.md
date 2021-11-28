@@ -13,9 +13,9 @@ intro:
 feature_row:
   - image_path: /assets/images/posts-snippet/stocking-up.png
     alt: "Stocking Up"
-    title: "Stocking Up"
-    excerpt: "A technical write-up for Stocking Up!"
-    url: "/posts/2021/11/28/stocking-up.html"
+    title: "Stocking Up: A Technical Write-Up"
+    excerpt: "The highs, lows and funny moments of creating Stocking Up V2"
+    url: "/posts/2021/11/28/stocking-up-technical-writeup.html"
     btn_label: "Read More"
     btn_class: "btn--primary"
 ---
