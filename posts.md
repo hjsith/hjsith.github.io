@@ -20,6 +20,10 @@ feature_row:
     btn_class: "btn--primary"
 ---
 
+<head>
+<link rel="shortcut icon" type="image/png" href="{{ "/assets/images/favicon.png"  | absolute_url }}">
+</head>
+
 {% include feature_row id="intro" type="center" %}
 
 {% include feature_row %}
