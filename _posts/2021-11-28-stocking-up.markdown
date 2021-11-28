@@ -8,7 +8,7 @@ tags:
 ---
 
 <head>
-<link rel="shortcut icon" type="image/png" href="{{ "/assets/images/favicon.png"  | absolute_url }}">
+<link rel="shortcut icon" type="image/png" href="{{ "/assets/images/icon.png"  | absolute_url }}">
 </head>
 
 This is what my code will look like below!
