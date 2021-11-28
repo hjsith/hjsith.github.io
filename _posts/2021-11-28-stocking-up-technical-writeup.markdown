@@ -9,7 +9,7 @@ tags:
 
 {% include head.html %}
 
-{% include figure image_path="/assets/images/posts-snippets/stocking-up.png" alt="Stocking Up portfolio view screenshot" caption="The Stocking Up portfolio view." %}
+{% include figure image_path="/assets/images/posts-snippet/stocking-up.png" alt="Stocking Up portfolio view screenshot" caption="The Stocking Up portfolio view." %}
 
 This is what my code will look like below!
 
