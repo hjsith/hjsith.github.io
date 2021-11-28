@@ -35,6 +35,8 @@ footer:
       icon: "fab fa-fw fa-github"
       url: "https://github.com/hjsith"
 
+favicon: /assets/images/logo.png
+
 defaults:
   # _posts
   - scope:
