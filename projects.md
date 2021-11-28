@@ -21,7 +21,7 @@ feature_row2:
 ---
 
 <head>
-<link rel="shortcut icon" type="image/png" href="{{ "/assets/images/icon.png"  | absolute_url }}">
+<link rel="shortcut icon" type="image/png" href="{{ "/assets/images/favicon.png"  | absolute_url }}">
 </head>
 
 {% include feature_row id="intro" type="center" %}
