@@ -57,7 +57,6 @@ minimal_mistakes_skin: "dark"
 plugins:
   - jekyll-feed
   - jekyll-include-cache
-  - jekyll-seo-tag
 
 logo: "/assets/images/logo.png"
 
