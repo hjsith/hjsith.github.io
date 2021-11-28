@@ -8,7 +8,7 @@ tags:
 ---
 
 <head>
-  <link type="image/png" href="favicon.png" />
+<link rel="icon" href="{{ site.baseurl }}/favicon.png" type="image/png" />
 </head>
 
 This is what my code will look like below!

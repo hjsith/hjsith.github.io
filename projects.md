@@ -21,7 +21,7 @@ feature_row2:
 ---
 
 <head>
-<link type="image/png" href="favicon.png" />
+<link rel="icon" href="{{ site.baseurl }}/favicon.png" type="image/png" />
 </head>
 
 {% include feature_row id="intro" type="center" %}
