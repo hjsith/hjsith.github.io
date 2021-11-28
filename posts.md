@@ -7,11 +7,11 @@ header:
   overlay_filter: "0.5"
   overlay_image: /assets/images/splash/posts.jpg
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
-excerpt: "A 20 year old software engineer at heart!"
+excerpt: "A collection of my technical (and non-technical) writings"
 intro:
   - excerpt: "Hi"
 feature_row:
-  - image_path: /assets/images/posts-snippet/stocking-up.jpg
+  - image_path: /assets/images/posts-snippet/stocking-up.png
     alt: "Stocking Up"
     title: "Stocking Up"
     excerpt: "A technical write-up for Stocking Up!"
@@ -20,9 +20,7 @@ feature_row:
     btn_class: "btn--primary"
 ---
 
-<head>
-<link rel="icon" href="{{ site.baseurl }}/favicon.png" type="image/png" />
-</head>
+{% include head.html %}
 
 {% include feature_row id="intro" type="center" %}
 

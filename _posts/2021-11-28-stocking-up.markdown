@@ -7,9 +7,7 @@ tags:
   - react
 ---
 
-<head>
-<link rel="icon" href="{{ site.baseurl }}/favicon.png" type="image/png" />
-</head>
+{% include head.html %}
 
 This is what my code will look like below!
 

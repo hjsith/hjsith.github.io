@@ -7,22 +7,18 @@ header:
   overlay_filter: "0.5"
   overlay_image: /assets/images/splash/projects.jpg
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
-excerpt: "A 20 year old software engineer at heart!"
-intro:
-  - excerpt: "Hi"
+excerpt: "Showcasing my projects that utilise various tech stacks!"
 feature_row2:
-  - image_path: /assets/images/project-snippet/stocking-up.jpg
-    alt: "placeholder image 2"
-    title: "Placeholder Image Left Aligned"
-    excerpt: 'This is some sample content that goes here with **Markdown** formatting. Left aligned with `type="left"`'
+  - image_path: /assets/images/project-snippet/stocking-up.png
+    alt: "Stocking Up V2"
+    title: "Stocking Up V2"
+    excerpt: "An online web application that used near realtime ASX prices to allow users to become investors in a simulated shared stock market."
     url: "#test-link"
     btn_label: "Read More"
     btn_class: "btn--primary"
 ---
 
-<head>
-<link rel="icon" href="{{ site.baseurl }}/favicon.png" type="image/png" />
-</head>
+{% include head.html %}
 
 {% include feature_row id="intro" type="center" %}
 
