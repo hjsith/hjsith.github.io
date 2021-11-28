@@ -10,8 +10,8 @@ toc_label: "Sections"
 toc_icon: "cog"
 ---
 {% include head.html %}
+![Stocking Up portfolio view screenshot](/assets/images/posts-snippet/stocking-up.png "The Stocking Up portfolio view.")
 # Introduction
-{% include figure image_path="/assets/images/posts-snippet/stocking-up.png" alt="Stocking Up portfolio view screenshot" caption="The Stocking Up portfolio view." %}
 ##
 
 # The tech stack
