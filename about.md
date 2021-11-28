@@ -13,5 +13,5 @@ intro:
 ---
 
 <head>
-<link rel="shortcut icon" type="image/png" href="{{ "/assets/images/favicon.png"  | absolute_url }}">
+<link rel="shortcut icon" type="image/png" href="{{ "favicon.png"  | absolute_url }}">
 </head>
