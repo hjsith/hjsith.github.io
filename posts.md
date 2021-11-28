@@ -8,8 +8,6 @@ header:
   overlay_image: /assets/images/splash/posts.jpg
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
 excerpt: "A collection of my technical (and non-technical) writings"
-intro:
-  - excerpt: "Hi"
 feature_row:
   - image_path: /assets/images/posts-snippet/stocking-up.png
     alt: "Stocking Up"
