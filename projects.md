@@ -1,7 +1,6 @@
 ---
 title: "Projects"
 layout: splash
-date: 2016-03-23T11:48:41-04:00
 header:
   overlay_color: "#000"
   overlay_filter: "0.5"
@@ -20,6 +19,5 @@ feature_row2:
 
 {% include head.html %}
 
-{% include feature_row id="intro" type="center" %}
-
+---
 {% include feature_row id="feature_row2" type="left" %}
