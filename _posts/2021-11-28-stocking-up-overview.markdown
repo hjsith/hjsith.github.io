@@ -290,9 +290,13 @@ export async function getAllCurrentFriendsForUser(id) {
 
 ### Crazy API stuff!
 
+#### Price Data
+
+I was responsible for devising a method to
+
 #### News Feed
 
-#### Price Data
+Vishaal was responsible for getting the news data for the application
 
 ### Order Queues
 
