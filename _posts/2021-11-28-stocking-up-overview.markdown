@@ -21,6 +21,20 @@ gallery:
     url: /assets/images/stocking-up-screenshots/portfolio-concept.png
     alt: "Portfolio View Concept"
     title: "Portfolio Mock"
+
+gallery2:
+  - image_path: /assets/images/stocking-up-screenshots/Friends.png
+    url: /assets/images/stocking-up-screenshots/Friends.png
+    alt: "Friends Page"
+    title: "Friends Page"
+  - image_path: /assets/images/stocking-up-screenshots/Profile.png
+    url: /assets/images/stocking-up-screenshots/Profile.png
+    alt: "Profile Page"
+    title: "Profile Page"
+  - image_path: /assets/images/stocking-up-screenshots/Portfolio.png
+    url: /assets/images/stocking-up-screenshots/Portfolio.png
+    alt: "Portfolio Page"
+    title: "Portfolio Page"
 ---
 
 {% include head.html %}
@@ -583,6 +597,10 @@ export async function updateArticles() {
   }
 }
 ```
+
+## Final Screenshots
+
+{% include gallery2 caption="Some of the final Stocking Up V2 screenshots" %}
 
 ## Fun tidbits
 
