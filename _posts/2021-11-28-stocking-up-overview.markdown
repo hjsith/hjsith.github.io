@@ -286,20 +286,307 @@ export async function getAllCurrentFriendsForUser(id) {
 }
 ```
 
+### Order Queues
+
+In a stock market, it often takes some time for your pending order to execute. I wanted to simulate this experience by utilising Order Queues for our application. After placing an order, it would take 15 minutes for your order to be executed. As I faced this problem after I dealt with the Azure Functions (as discussed later), I didn't want to add another recurring cost to our already wallet-draining Azure Function set.
+
+So after a bit of research, I decided to look into local CRON jobs that could operate on a background thread, and finally settled on Node-CRON, a npm package that allows you to schedule functions based on CRON statements. You can see how I scheduled this below:
+
+```javascript
+if (env.node_env != "test") {
+  cron.schedule("* * * * *", async function () {
+    await pendingOrderCheck();
+  });
+}
+```
+
+This CRON job occured every minute of the day would check if there was any pending order. You can see the pendingOrderCheck function below:
+
+```javascript
+export async function pendingOrderCheck() {
+  let now = moment.utc();
+  console.log(
+    "Checking for pending orders prior to: " +
+      moment.utc(now, "YYYY-MM-DD HH:mm:ss").format()
+  );
+
+  getAllPendingOrders() //Gets all pending orders for the database
+    .then((pendingOrders) => {
+      pendingOrders.forEach(async (elem) => {
+        let orderTotal = elem.OrderTotal;
+        let investorID = elem.InvestorID;
+        let hasExecuted = await investorBuy(investorID, orderTotal);
+        if (hasExecuted) {
+          elem.Status = "EXECUTED";
+          await Holding.create({
+            InvestorID: elem.InvestorID,
+            ListingID: elem.ListingID,
+            OrderID: elem.OrderID,
+            Current: true,
+          });
+          console.log(
+            "Order executed with price and listing code: " +
+              elem.OrderTotal +
+              " " +
+              elem.ListingID
+          );
+          await elem.save();
+        } else {
+          elem.Status = "CANCELLED";
+          console.log(
+            "Order cancelled with price and listing code: " +
+              elem.OrderTotal +
+              " " +
+              elem.ListingID
+          );
+          await elem.save();
+        }
+      });
+    })
+    .then(() => {
+      console.log("Done checking for pending orders");
+    });
+}
+```
+
+This function took me ages to figure out, but I got it working in the end, and I'm really happy with it!
+
 ### Unit Testing
+
+For unit testings, we utilised Jest in conjunction with SuperTest. For some of us, it was our first venture into unit testing so we wrote basic, yet succinct tests for our applications. You can see one of them below:
+
+```javascript
+describe("Friends endpoint", () => {
+  //Unit test that checks that a user can add another user
+  it("Allows user1 to add user2", async () => {
+    const res = await request(app)
+      .post("/api/friends/add")
+      .send({
+        rId: user1.body.id,
+        aId: user2.body.id,
+      })
+      .set("cookie", cookie1);
+    expect(res.status).toEqual(201);
+    expect(res.body).toEqual(expect.any(Object));
+  });
+});
+```
 
 ### Crazy API stuff!
 
 #### Price Data
 
-I was responsible for devising a method to
+I was responsible for devising a method to retrieve/store both current and historical stock data that could be used in the application. I first looked into WebJobs which provides the ability to run background tasks within Azure App Service. However, WebJobs is not available for Linux instances so that idea was a bust. I then remembered that Azure Functions existed!
+
+I got to writing an Azure Function that would connect to an API, retrieved stock data and store it within our database! The thing was: we needed 4 different types of historical data (alongside current price retrieval). So I decided to create 3 separate functions (One-Day, Five-Day and End-Of-Day) and schedule them using CRON statements.
+
+```json
+{
+  "bindings": [
+    {
+      "name": "One-Day",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 */10 0-6 * * 1-5"
+    }
+  ]
+}
+```
+
+The One-Day function, which corresponds to the last day of price data, would run every 10 minutes, logging the current price.
+
+```javascript
+try {
+  await sequelize.authenticate();
+  context.log("Connection has been established successfully.");
+} catch (error) {
+  context.error("Unable to connect to the database:", error);
+}
+
+await sequelize.sync();
+
+const listings = await Price.findAll();
+
+let then = moment(now).subtract(10, "minutes");
+let utcTime = moment.utc(then, "YYYY-MM-DD HH:mm:ss");
+
+context.log("Starting to add one day historical prices...");
+
+for (var i = 0; i < listings.length; i++) {
+  await OneDay.create({
+    ListingID: listings[i].ListingID,
+    PastPrice: listings[i].CurrentPrice,
+    DateTimeOfPrice: utcTime,
+  });
+}
+
+context.log("Added one day historical prices successfully.");
+context.log("Starting to add current prices...");
+
+for (var i = 0; i < codes.data.values.length; i++) {
+  let price = prices.data.values[i][0] == "#N/A" ? 0 : prices.data.values[i][0];
+
+  const [listing, created] = await Price.findOrCreate({
+    where: { ListingID: codes.data.values[i][0] },
+    defaults: {
+      CurrentPrice: price,
+    },
+  });
+
+  if (!created) {
+    listing.CurrentPrice = price;
+    await listing.save();
+  }
+}
+
+context.log("Added current prices successfully.");
+```
+
+Likewise, the Five-Day function would execute in a similar fashion, except it would run every 30 minutes (as the price data in a five day range is only needed so frequently).
+
+On the other hand, the End-Of-Day function was responsible for deleting out-of-date data, whilst also storing the closing price in the Two-Week and One-Month tables:
+
+```javascript
+try {
+  await sequelize.authenticate();
+  context.log("Connection has been established successfully.");
+} catch (error) {
+  context.error("Unable to connect to the database:", error);
+}
+
+await sequelize.sync();
+
+const listings = await Price.findAll();
+
+let then = moment(now).subtract(10, "minutes");
+let utcTime = moment.utc(then, "YYYY-MM-DD HH:mm:ss");
+
+context.log("Starting to add five day historical prices...");
+
+for (var i = 0; i < listings.length; i++) {
+  await FiveDays.create({
+    ListingID: listings[i].ListingID,
+    PastPrice: listings[i].CurrentPrice,
+    DateTimeOfPrice: utcTime,
+  });
+}
+
+context.log("Added five day historical prices successfully.");
+
+const dayEndPrices = await FiveDays.findAll({
+  where: {
+    DateTimeOfPrice: utcTime,
+  },
+});
+
+let utcDate = moment.utc(then, "YYYY-MM-DD");
+
+context.log("Starting to add two weeks prices with date: " + utcDate);
+
+for (var i = 0; i < dayEndPrices.length; i++) {
+  await TwoWeeks.create({
+    ListingID: dayEndPrices[i].ListingID,
+    PastPrice: dayEndPrices[i].PastPrice,
+    DateTimeOfPrice: utcDate,
+  });
+}
+
+context.log("Added two weeks prices successfully.");
+context.log("Starting to add one month prices with date: " + utcDate);
+
+for (var i = 0; i < dayEndPrices.length; i++) {
+  await OneMonth.create({
+    ListingID: dayEndPrices[i].ListingID,
+    PastPrice: dayEndPrices[i].PastPrice,
+    DateTimeOfPrice: utcDate,
+  });
+}
+
+context.log("Added one month prices successfully.");
+context.log("Starting to remove one day prices...");
+
+await OneDay.destroy({
+  where: {
+    DateTimeOfPrice: {
+      [Op.lt]: moment.utc().subtract(1, "days"),
+    },
+  },
+});
+
+context.log("Removed old one day prices successfully.");
+context.log("Starting to remove five day prices...");
+
+await FiveDays.destroy({
+  where: {
+    DateTimeOfPrice: {
+      [Op.lt]: moment.utc().subtract(7, "days"),
+    },
+  },
+});
+
+context.log("Removed old five days prices successfully.");
+context.log("Starting to remove two weeks prices...");
+
+await TwoWeeks.destroy({
+  where: {
+    DateTimeOfPrice: {
+      [Op.lt]: moment.utc().subtract(18, "days"),
+    },
+  },
+});
+
+context.log("Removed old two weeks prices successfully.");
+context.log("Starting to remove one month prices...");
+
+await OneMonth.destroy({
+  where: {
+    DateTimeOfPrice: {
+      [Op.lt]: moment.utc().subtract(31, "days"),
+    },
+  },
+});
+
+context.log("Removed old one month prices successfully.");
+context.log("Complete!");
+```
 
 #### News Feed
 
-Vishaal was responsible for getting the news data for the application
+Vishaal was responsible for getting the news data for the application. He wrote an excellent function, using Sequelize models, that allowed for articles to be stored in our database (and also updated). You can see the code below:
 
-### Order Queues
+```javascript
+export async function updateArticles() {
+  let now = moment.utc();
+  console.log(
+    "Looking for new articles to add to the page!" +
+      moment.utc(now, "YYYY-MM-DD HH:mm:ss").format()
+  );
+  const res = await Axios.get(
+    "https://newsapi.org/v2/everything?q=%22ASX%22&sources=abc-news-au,%20ABC%20News%20(AU)&apiKey=a2461adc51034c3c8d7fcc374949d3c2"
+  );
+  for (let i = 0; i < res.data.articles.length; ++i) {
+    const articleFound = await Articles.findOne({
+      where: {
+        ArticleName: res.data.articles[i].title,
+      },
+    });
+    if (articleFound == null && res.data.articles[i].url != null) {
+      await Articles.create({
+        ArticleName: res.data.articles[i].title,
+        ArticleDate: res.data.articles[i].publishedAt,
+        ArticleInfo: res.data.articles[i].description,
+        ArticleImage: res.data.articles[i].urlToImage,
+        ArticleURL: res.data.articles[i].url,
+        ArticleSource: res.data.articles[i].source.name,
+      });
+    }
+  }
+}
+```
 
 ## Fun tidbits
+
+- James wrote a very cool class component for the User Profile Icons that takes in the user's name, hashes it and returns a predetermined color for it. Pretty cool!
+- When testing the pending order check, we noticed that many pending orders were being executed twice! Turns out, one of us was running a local copy of the application which doubled up with the App Service copy, thereby causing the CRON job to run twice simulatenously.
 
 ## Concluding thoughts
