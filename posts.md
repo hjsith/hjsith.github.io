@@ -12,7 +12,7 @@ feature_row:
     alt: "Stocking Up"
     title: "Stocking Up: An Overview"
     excerpt: "An overview of Stocking Up V2 (plus much more)!"
-    url: "/work-in-progress.html"
+    url: "/posts/2021/11/28/stocking-up-overview.html"
     btn_label: "Read More"
     btn_class: "btn--primary"
 ---
