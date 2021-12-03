@@ -353,7 +353,7 @@ This function took me ages to figure out, but I got it working in the end, and I
 
 ### Unit Testing
 
-For unit testings, we utilised Jest in conjunction with SuperTest. For some of us, it was our first venture into unit testing so we wrote basic, yet succinct tests for our applications. You can see one of them below:
+For unit testings, we utilised Jest in conjunction with SuperTest. For some of us, it was our first venture into unit testing so we wrote basic, yet succinct, tests for our applications. You can see one of them below:
 
 ```javascript
 describe("Friends endpoint", () => {
@@ -590,3 +590,7 @@ export async function updateArticles() {
 - When testing the pending order check, we noticed that many pending orders were being executed twice! Turns out, one of us was running a local copy of the application which doubled up with the App Service copy, thereby causing the CRON job to run twice simulatenously.
 
 ## Concluding thoughts
+
+Overall, this university assignment was a great way to end my undergraduate degree! I was extremely proud with the work my fellow team members accomplished and can definitely say, I couldn't have done it without their support and expertise.
+
+As you can tell, this project allowed us to learn a lot of modern web application development, especially CI/CD and cloud technologies. I can say for certain that there's still a lot to learn so if you have any advice, please shoot me a message or leave a comment below!
