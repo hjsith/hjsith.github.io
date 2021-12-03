@@ -12,7 +12,7 @@ feature_row2:
     alt: "Stocking Up V2"
     title: "Stocking Up V2"
     excerpt: "An online web application that used near realtime ASX prices to allow users to become investors in a simulated shared stock market."
-    url: "#test-link"
+    url: "/work-in-progress.html"
     btn_label: "Read More"
     btn_class: "btn--primary"
 ---
@@ -20,4 +20,5 @@ feature_row2:
 {% include head.html %}
 
 ---
+
 {% include feature_row id="feature_row2" type="left" %}
