@@ -600,7 +600,7 @@ export async function updateArticles() {
 
 ## Final Screenshots
 
-{% include gallery2 caption="Some of the final Stocking Up V2 screenshots" %}
+{% include gallery2.html caption="Some of the final Stocking Up V2 screenshots" %}
 
 ## Fun tidbits
 
